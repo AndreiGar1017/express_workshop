@@ -1,6 +1,6 @@
 const express = require('express');
 const pokemon = express.Router();
-const db = require('../config/database')
+const db = require('../config/database');
 
 pokemon.post("/",async(req,res,next)=>{
     const {pok_name, pok_height, pok_weight, pok_base_experience} = req.body;
@@ -63,7 +63,7 @@ pokemon.patch("/:id([0-9]{1,3})",async(req,res,next)=>{
 
 pokemon.get("/", async(req, res, next)=>{
     const pkmn = await db.query("SELECT * FROM pokemon")
-    return res.status(200).json({code:1, message:pkmn});
+    return res.status(200).json({code:200, message:pkmn});
 });
 
 pokemon.get("/:id([0-9]{1,3})", async(req,res,next)=>{
